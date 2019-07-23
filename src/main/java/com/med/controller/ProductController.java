@@ -40,7 +40,7 @@ public class ProductController {
         return null;
     }
 
-    @PostMapping("/product/update/{id}")
+    @PutMapping("/product/update/{id}")
     public Product updateChambre(@PathVariable("id") Long id, Product product) {
         Optional<Product> customerLoaded = productRepository.findById(id);
         if (customerLoaded != null) {
@@ -60,6 +60,8 @@ public class ProductController {
         }
         return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
     }
+
+
     public ProductRepository getProductRepository() {
         return productRepository;
     }

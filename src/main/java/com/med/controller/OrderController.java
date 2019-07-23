@@ -1,6 +1,6 @@
 package com.med.controller;
 
-import com.med.model.Order;
+import com.med.model.OrderTo;
 import com.med.repository.OrderRepository;
 import com.med.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public List<Order> getAll() {
+    public List<OrderTo> getAll() {
         return orderRepository.findAll();
     }
 
@@ -34,59 +34,48 @@ public class OrderController {
     }
 
     @PostMapping("/order")
-    public Order createOrder(@RequestBody Order order) {
+    public OrderTo createOrder(@RequestBody OrderTo order) {
         return orderRepository.save(order);
     }
     /*
       @PostMapping("/order")
     public Order createOrder(@RequestBody Order order) {
         return orderService.saveOrderWithOrderItems(order);
+    }*/
+
+    @GetMapping("/order/edit")
+    public OrderTo updateOrder(@RequestBody OrderTo orderTo) {
+        Optional<OrderTo> order = orderRepository.findById(orderTo.getId());
+        if (order.get() != null) {
+            return orderRepository.save(orderTo);
+        }
+        return null;
     }
-    * */
+
+    @GetMapping("/order/delete")
+    public ResponseEntity<OrderTo> deleteOrder(@RequestBody OrderTo orderTo) {
+        Optional<OrderTo> order = orderRepository.findById(orderTo.getId());
+        if (order.get() != null) {
+            orderRepository.delete(orderTo);
+            return new ResponseEntity<OrderTo>(HttpStatus.OK);
+        }
+        return new ResponseEntity<OrderTo>(HttpStatus.NOT_FOUND);
+    }
 
     @GetMapping("/order/edit/{id}")
-    public Order getOneOrder(@PathVariable("id") Long id) {
-        Optional<Order> order = orderRepository.findById(id);
+    public OrderTo getOneOrder(@PathVariable("id") Long id, @RequestBody OrderTo orderTo) {
+        Optional<OrderTo> order = orderRepository.findById(id);
         if (order.get() != null) {
-            return order.get();
+            return orderRepository.save(order.get());
         }
         return null;
-    }
-
-
-
-    /*
-
-
-
-    @PostMapping("/customer/update/{id}")
-    public Order updateChambre(@PathVariable("id") Long id, Order invoice) {
-        Optional<Order> orderLoaded = OrderRepository.findById(id);
-        if (orderLoaded != null) {
-            return OrderRepository.save(invoice);
-        }
-
-        return null;
-    }
-
-    @DeleteMapping("/customer/delete/{id}")
-    public ResponseEntity<Order> deleteOrder(@PathVariable("id") Long id) {
-        Optional<Order> order = OrderRepository.findById(id);
-
-        if (order != null) {
-            OrderRepository.delete(order.get());
-            return new ResponseEntity<Order>(HttpStatus.OK);
-        }
-        return new ResponseEntity<Order>(HttpStatus.NOT_FOUND);
     }
 
     public OrderRepository getOrderRepository() {
-        return OrderRepository;
+        return orderRepository;
     }
 
     public void setOrderRepository(OrderRepository orderRepository) {
-        this.OrderRepository = orderRepository;
-    }*/
-
-
+        this.orderRepository = orderRepository;
+    }
 }

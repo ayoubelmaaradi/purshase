@@ -1,9 +1,9 @@
 package com.med.service.inter;
 
-import com.med.model.Order;
+import com.med.model.OrderTo;
 
 public interface OrderItemServiceInter {
-    public Order saveOrderItems(Order order);
+    public OrderTo saveOrderItems(OrderTo order);
 
-    Order saveOrderWithOrderItems(Order order);
+    OrderTo saveOrderWithOrderItems(OrderTo order);
 }

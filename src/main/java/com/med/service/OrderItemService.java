@@ -1,7 +1,7 @@
 package com.med.service;
 
-import com.med.model.Order;
 import com.med.model.OrderItem;
+import com.med.model.OrderTo;
 import com.med.repository.OrderItemRepository;
 import com.med.service.inter.OrderItemServiceInter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ private OrderItemRepository  orderItemRepository;
 
 
     @Override
-    public Order saveOrderItems(Order order) {
+    public OrderTo saveOrderItems(OrderTo order) {
         if (order.getOrderItems() == null ||order.getOrderItems().isEmpty()) {
             return null;
         } else {
@@ -23,15 +23,13 @@ private OrderItemRepository  orderItemRepository;
                o.setOrder(order);
                 orderItemRepository.save(o);
             }
-
-
         }
         return order;
 
     }
 
     @Override
-    public Order saveOrderWithOrderItems(Order order) {
+    public OrderTo saveOrderWithOrderItems(OrderTo order) {
         return null;
     }
 

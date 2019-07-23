@@ -1,11 +1,11 @@
 package com.med.controller;
 
-import com.med.model.Order;
+import com.med.model.OrderTo;
+import com.med.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.med.service.OrderItemService;
 
 //import java.util.List;
 
@@ -16,7 +16,7 @@ public class OrderItemController {
 
 
     @PostMapping("/orderItem")
-    public Order createOrder(@RequestBody Order order) {
+    public OrderTo createOrder(@RequestBody OrderTo order) {
         return orderItemService.saveOrderItems(order);
     }
 }

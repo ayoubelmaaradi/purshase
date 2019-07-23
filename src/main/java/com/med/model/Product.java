@@ -3,7 +3,6 @@ package com.med.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -25,6 +24,30 @@ public class Product implements Serializable {
 
     public Product(String refrence, Double price) {
         this.refrence = refrence;
+        this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRefrence() {
+        return refrence;
+    }
+
+    public void setRefrence(String refrence) {
+        this.refrence = refrence;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
         this.price = price;
     }
 }

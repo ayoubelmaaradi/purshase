@@ -3,7 +3,6 @@ package com.med.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -33,4 +32,53 @@ public class Customer implements Serializable {
         this.address = address;
         this.ice = ice;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTele() {
+        return tele;
+    }
+
+    public void setTele(String tele) {
+        this.tele = tele;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getIce() {
+        return ice;
+    }
+
+    public void setIce(String ice) {
+        this.ice = ice;
+    }
+
 }

@@ -28,19 +28,12 @@ public class CustomerController {
         return customerRepository.save(customer);
     }
 
-    @GetMapping("/customer/edit/{id}")
-    public Customer getOneCustomer(@PathVariable("id") Long id) {
-        Optional<Customer> customer = customerRepository.findById(id);
-        if (customer.get() != null) {
-            return customer.get();
-        }
-        return null;
-    }
 
-    @PostMapping("/customer/update/{id}")
-    public Customer updateCustomer(@PathVariable("id") Long id, Customer customer) {
+    @PutMapping("/customer/update/{id}")
+    public Customer updateCustomer(@PathVariable("id") Long id, @RequestBody Customer customer) {
         Optional<Customer> customerLoaded = customerRepository.findById(id);
         if (customerLoaded != null) {
+            customer.setId(customerLoaded.get().getId());
             return customerRepository.save(customer);
         }
 

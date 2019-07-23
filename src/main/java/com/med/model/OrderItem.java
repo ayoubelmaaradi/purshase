@@ -3,7 +3,6 @@ package com.med.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -21,17 +20,44 @@ public class OrderItem implements Serializable {
     @OneToOne
     private Product product;
     @ManyToOne
-    private Order order;
+    private OrderTo order;
 
-    public OrderItem(int qte, Product product, Order order) {
+    public OrderItem(int qte, Product product, OrderTo order) {
         this.qte = qte;
         this.product = product;
         this.order = order;
     }
 
+    public Long getId() {
+        return id;
+    }
 
-    public void setOrder(Order order) {
-        this.order=order;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getQte() {
+        return qte;
+    }
+
+    public void setQte(int qte) {
+        this.qte = qte;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public OrderTo getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderTo order) {
+        this.order = order;
     }
 }
 
