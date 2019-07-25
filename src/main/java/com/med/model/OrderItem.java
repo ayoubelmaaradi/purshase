@@ -21,7 +21,8 @@ public class OrderItem implements Serializable {
     private Product product;
     @ManyToOne
     private OrderTo order;
-
+    @OneToOne
+    private Vendor vendor;
     public OrderItem(int qte, Product product, OrderTo order) {
         this.qte = qte;
         this.product = product;
@@ -58,6 +59,14 @@ public class OrderItem implements Serializable {
 
     public void setOrder(OrderTo order) {
         this.order = order;
+    }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 }
 
