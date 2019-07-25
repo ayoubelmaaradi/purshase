@@ -27,6 +27,8 @@ public class OrderTo implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
     private Date dateOrdering=new Date();
+    @OneToMany
+    private Vendor vendor;
     @JsonIgnore
     public List<OrderItem> getOrderItems() {
         return orderItems;
@@ -73,5 +75,13 @@ public class OrderTo implements Serializable {
 
     public void setDateOrdering(Date dateOrdering) {
         this.dateOrdering = dateOrdering;
+    }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 }
