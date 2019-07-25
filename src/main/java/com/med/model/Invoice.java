@@ -21,7 +21,7 @@ public class Invoice implements Serializable {
     private Customer customer;
     @OneToOne
     private OrderTo order;
-    Date dateInvoice;
+    Date dateInvoice=new Date();
 
     public Invoice(Customer customer, OrderTo order, Date dateInvoice) {
         this.customer = customer;

@@ -33,15 +33,15 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/order")
-    public OrderTo createOrder(@RequestBody OrderTo order) {
-        return orderRepository.save(order);
-    }
-    /*
+//    @PostMapping("/order")
+//    public OrderTo createOrder(@RequestBody OrderTo order) {
+//        return orderRepository.save(order);
+//    }
+
       @PostMapping("/order")
-    public Order createOrder(@RequestBody Order order) {
+    public OrderTo createOrder(@RequestBody OrderTo order) {
         return orderService.saveOrderWithOrderItems(order);
-    }*/
+    }
 
     @GetMapping("/order/edit")
     public OrderTo updateOrder(@RequestBody OrderTo orderTo) {

@@ -1,7 +1,10 @@
 package com.med.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,10 +24,10 @@ public class OrderTo implements Serializable {
     private Long id;
     private String reference;
     private String status;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
-    private Date dateOrdering;
-
+    private Date dateOrdering=new Date();
+    @JsonIgnore
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -59,7 +62,7 @@ public class OrderTo implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    @JsonSetter
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
